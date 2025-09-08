@@ -13,7 +13,7 @@
 
 <body class="bg-[#F0FDF4]">
 
-    <header class="w-full bg-[#15803D] shadow-sm">
+    <header class="w-full bg-[#166534] shadow-sm">
         <div class="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-3 
               md:px-8 md:py-4 lg:px-12 lg:py-5">
             <div class="flex items-center">
@@ -78,11 +78,11 @@
                 <aside class="rounded-xl p-4 lg:col-span-1">
                     <h3 class="text-xl font-semibold text-[#1F2937] mb-4">Categories</h3>
                     <ul class="space-y-2">
-                        <li class="cursor-pointer px-3 py-2 rounded-md hover:bg-[#15803D] hover:text-[#FFFFFF]">Fruit
+                        <li class="cursor-pointer px-3 py-2 rounded-md hover:bg-[#166534] hover:text-[#FFFFFF]">Fruit
                             Trees</li>
-                        <li class="cursor-pointer px-3 py-2 rounded-md hover:bg-[#15803D] hover:text-[#FFFFFF]">
+                        <li class="cursor-pointer px-3 py-2 rounded-md hover:bg-[#166534] hover:text-[#FFFFFF]">
                             Flowering Trees</li>
-                        <li class="cursor-pointer px-3 py-2 rounded-md hover:bg-[#15803D] hover:text-[#FFFFFF]">Shade
+                        <li class="cursor-pointer px-3 py-2 rounded-md hover:bg-[#166534] hover:text-[#FFFFFF]">Shade
                             Trees</li>
                     </ul>
                 </aside>
@@ -92,16 +92,17 @@
                     <!-- Tree Card -->
                     <div class="bg-white shadow-md rounded-xl p-4 flex flex-col">
                         <img src="assets/mango.jpg" alt="Mango Tree" class="w-full h-40 object-cover rounded-lg mb-3">
-                        <h3 class="text-lg font-semibold text-gray-800">Mango Tree</h3>
+                        <h3 class="text-lg font-semibold text-gray-800" onclick="openModal()">Mango Tree</h3>
                         <p class="text-sm text-gray-600 mb-3">
                             A fast-growing tropical tree that produces delicious, juicy mangoes during summer.
                             Its dense green leaves give excellent shade.
                         </p>
                         <div class="flex items-center justify-between mb-3">
-                            <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Fruit Tree</span>
+                            <span @click="open = true"
+                                class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Fruit Tree</span>
                             <span class="text-lg font-bold text-gray-900">৳500</span>
                         </div>
-                        <button class="mt-auto bg-[#15803D] text-white py-2 px-4 rounded-lg hover:bg-green-700">
+                        <button class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
                             Add to Cart
                         </button>
                     </div>
@@ -109,7 +110,7 @@
                     <!-- Duplicate More Cards -->
                     <div class="bg-white shadow-md rounded-xl p-4 flex flex-col">
                         <img src="assets/mango.jpg" alt="Mango Tree" class="w-full h-40 object-cover rounded-lg mb-3">
-                        <h3 class="text-lg font-semibold text-gray-800">Mango Tree</h3>
+                        <h3 class="text-lg font-semibold text-gray-800" onclick="openModal()">Mango Tree</h3>
                         <p class="text-sm text-gray-600 mb-3">
                             A fast-growing tropical tree that produces delicious, juicy mangoes during summer.
                             Its dense green leaves give excellent shade.
@@ -118,7 +119,7 @@
                             <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Fruit Tree</span>
                             <span class="text-lg font-bold text-gray-900">৳500</span>
                         </div>
-                        <button class="mt-auto bg-[#15803D] text-white py-2 px-4 rounded-lg hover:bg-green-700">
+                        <button class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
                             Add to Cart
                         </button>
                     </div>
@@ -134,7 +135,7 @@
                             <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Fruit Tree</span>
                             <span class="text-lg font-bold text-gray-900">৳500</span>
                         </div>
-                        <button class="mt-auto bg-[#15803D] text-white py-2 px-4 rounded-lg hover:bg-green-700">
+                        <button class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
                             Add to Cart
                         </button>
                     </div>
@@ -149,7 +150,7 @@
                             <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Fruit Tree</span>
                             <span class="text-lg font-bold text-gray-900">৳500</span>
                         </div>
-                        <button class="mt-auto bg-[#15803D] text-white py-2 px-4 rounded-lg hover:bg-green-700">
+                        <button class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
                             Add to Cart
                         </button>
                     </div>
@@ -259,7 +260,7 @@
                 Plant a Tree Today
             </h1>
 
-            <div class="bg-[#15803D] rounded-xl shadow-lg p-8">
+            <div class="bg-[#166534] rounded-xl shadow-lg p-8">
                 <div class="space-y-5">
 
                     <input type="text" placeholder="Your Name"
@@ -285,9 +286,36 @@
         </div>
     </section>
 
-<footer class="bg-[#14532D] p-3 text-center text-[#FFFFFF]">
-    <p>© 2025 Green Earth. All Rights Reserved.</p>
-</footer>
+    <footer class="bg-[#14532D] p-3 text-center text-[#FFFFFF]">
+        <p>© 2025 Green Earth. All Rights Reserved.</p>
+    </footer>
+
+
+    <div id="treeModal" class="fixed inset-0 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 relative">
+
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Mango Tree</h2>
+
+            <img src="assets/mango.jpg" alt="Mango Tree" class="w-full h-52 object-cover rounded-lg mb-4">
+
+            <p class="text-sm text-gray-700 mb-2">
+                <span class="font-semibold">Category:</span> Fruit Tree
+            </p>
+            <p class="text-sm text-gray-700 mb-2">
+                <span class="font-semibold">Price:</span> ৳500
+            </p>
+            <p class="text-sm text-gray-700">
+                <span class="font-semibold">Description:</span>
+                A fast-growing tropical tree that produces delicious, juicy mangoes during summer.
+                Its dense green leaves give excellent shade.
+            </p>
+            <div class="mt-6 text-right">
+                <button onclick="closeModal()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 
 
 </body>
