@@ -1,8 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("loader").classList.remove("hidden");
+
     getCatagoryData();
     getAllItemData();
-
 
 
 });
@@ -26,12 +28,23 @@ const getCatagoryData = async () => {
 
         for (let cat of CatagolyList) {
 
-            HtmlContent += `<li class="cursor-pointer px-3 py-2 rounded-md hover:bg-[#166534] hover:text-[#FFFFFF]" 
+            HtmlContent += `<li class="cursor-pointer px-3 py-2 rounded-md hover:bg-green-700 hover:text-[#FFFFFF]" 
            onclick="getItemDataByCatagory(${cat.id})" id="${cat.id}">${cat.category_name}</li>`;
 
         }
 
         catul.innerHTML = HtmlContent;
+
+        // add event listener to each li
+        const lis = catul.querySelectorAll("li");
+        lis.forEach(li => {
+            li.addEventListener("click", () => {
+                // remove active from all
+                lis.forEach(item => item.classList.remove("bg-[#166534]", "text-[#FFFFFF]"));
+                // add active to clicked one
+                li.classList.add("bg-[#166534]", "text-[#FFFFFF]");
+            });
+        });
 
     } catch (error) {
         console.error("Fetch error:", error);
@@ -77,13 +90,15 @@ const getAllItemData = async () => {
 
         CardItem.innerHTML = HtmlContent;
 
+        document.getElementById("loader").classList.add("hidden");
+
     } catch (error) {
         console.error("Fetch error:", error);
     }
 };
 
 const getItemDataByCatagory = async (id) => {
-
+    document.getElementById("loader").classList.remove("hidden");
     try {
         const response = await fetch(`https://openapi.programming-hero.com/api/category/${id}`, {
             method: "GET",
@@ -121,6 +136,7 @@ const getItemDataByCatagory = async (id) => {
         }
 
         CardItem.innerHTML = HtmlContent;
+        document.getElementById("loader").classList.add("hidden");
 
     } catch (error) {
         console.error("Fetch error:", error);
