@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     getCatagoryData();
     getAllItemData();
 
+
+
 });
 
 const getCatagoryData = async () => {
@@ -63,9 +65,12 @@ const getAllItemData = async () => {
                             <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">${itm.category}</span>
                             <span class="text-lg font-bold text-gray-900">৳${itm.price}</span>
                         </div>
-                        <button class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
+                        <button 
+                            data-item='${JSON.stringify({ id: itm.id, name: itm.name, price: itm.price })}'
+                            onclick="addToCart(JSON.parse(this.dataset.item))"
+                            class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
                             Add to Cart
-                        </button>
+                       </button>
                     </div>`;
 
         }
@@ -105,9 +110,12 @@ const getItemDataByCatagory = async (id) => {
                             <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">${itm.category}</span>
                             <span class="text-lg font-bold text-gray-900">৳${itm.price}</span>
                         </div>
-                        <button class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
+                        <button 
+                            data-item='${JSON.stringify({ id: itm.id, name: itm.name, price: itm.price })}'
+                            onclick="addToCart(JSON.parse(this.dataset.item))"
+                            class="mt-auto bg-[#166534] text-white py-2 px-4 rounded-lg hover:bg-green-700">
                             Add to Cart
-                        </button>
+                       </button>
                     </div>`;
 
         }
@@ -153,6 +161,53 @@ const getItemDetails = async (id) => {
     } catch (error) {
         console.error("Fetch error:", error);
     }
+};
+
+let CartItems = [];
+
+
+const addToCart = (param) => {
+    try {
+
+        alert(`${param.name} has been added to the cart.`)
+
+        CartItems.push({
+            itemId: param.id,
+            itemName: param.name,
+            price: param.price,
+        });
+
+        renderCart();
+    } catch (error) {
+        console.error("Fetch error:", error);
+    }
+};
+
+const renderCart = () => {
+    const cartList = document.getElementById("cartList");
+
+    let HtmlContent = "";
+    let cartTotalAmount = 0;
+    CartItems.forEach((itm, index) => {
+        cartTotalAmount += itm.price;
+        HtmlContent += `<div 
+                class="bg-surface shadow-md px-2 rounded-lg bg-[#F0FDF4] flex items-center justify-between pb-2 mb-2">
+                <div>
+                    <span class="block font-medium text-[#1F2937]">${itm.itemName}</span>
+                    <span class="text-sm text-[#1F2937]">৳${itm.price} x 1</span>
+                </div>
+                <button class="text-red-500 hover:text-red-700" onclick="removeFromCart(${index})">⨯</button>
+            </div>`;
+    });
+
+    cartList.innerHTML = HtmlContent;
+    document.getElementById("totalamount").textContent = `৳${cartTotalAmount}`;
+};
+
+
+const removeFromCart = (index) => {
+    CartItems.splice(index, 1);
+    renderCart();
 };
 
 

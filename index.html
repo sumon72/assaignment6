@@ -66,7 +66,7 @@
     <section class="w-full py-10">
         <div class="mx-auto px-4 md:px-8">
 
-          
+
             <h1 class="text-3xl font-bold text-[#1F2937] text-center mb-8">
                 Choose Your Trees
             </h1>
@@ -78,41 +78,25 @@
                 <aside class="rounded-xl p-4 lg:col-span-1">
                     <h3 class="text-xl font-semibold text-[#1F2937] mb-4">Categories</h3>
                     <ul class="space-y-2" id="catagory">
-                       
+
                     </ul>
                 </aside>
 
-              <!-- card design -->
+                <!-- card design -->
                 <div id="itemCard" class="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                   
+
                 </div>
 
-               
+                <!-- cart list -->
                 <aside class="bg-white shadow-md rounded-xl p-4 lg:col-span-1">
                     <h2 class="text-xl font-semibold text-[#000000] mb-4">Your Cart</h2>
 
-                   
-                    <div
-                        class="bg-surface shadow-md px-2 rounded-lg bg-[#F0FDF4] flex items-center justify-between pb-2 mb-2">
-                        <div>
-                            <span class="block font-medium text-[#1F2937]">Mango Tree</span>
-                            <span class="text-sm text-[#1F2937]">৳500 x 1</span>
-                        </div>
-                        <button class="text-red-500 hover:text-red-700">⨯</button>
-                    </div>
-                    <div
-                        class="bg-surface shadow-md px-2 rounded-lg bg-[#F0FDF4] flex items-center justify-between pb-2 mb-2">
-                        <div>
-                            <span class="block font-medium text-[#1F2937]">Mango Tree</span>
-                            <span class="text-sm text-[#1F2937]">৳500 x 1</span>
-                        </div>
-                        <button class="text-red-500 hover:text-red-700">⨯</button>
-                    </div>
+                    <div id="cartList">
 
-                   
+                    </div>
                     <div class="flex items-center justify-between border-b border-gray-200 pb-2 mb-2">
                         <span class="block font-medium text-gray-800">Total</span>
-                        <span class="text-sm text-gray-600">৳1000</span>
+                        <span class="text-sm text-gray-600" id="totalamount"></span>
                     </div>
                 </aside>
             </div>
@@ -222,8 +206,8 @@
     </footer>
 
 
+    <!-- modal -->
 
-  
     <el-dialog>
         <dialog id="dialog" aria-labelledby="dialog-title"
             class="fixed inset-0 size-auto max-h-none max-w-none overflow-y-auto bg-transparent backdrop:bg-transparent">
@@ -236,26 +220,11 @@
                     class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95">
                     <div id="itemdetailsmodal" class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 
-                        <!-- <h2 class="text-xl font-bold text-gray-800 mb-4">Mango Tree</h2>
-
-                        <img src="assets/mango.jpg" alt="Mango Tree" class="w-full h-52 object-cover rounded-lg mb-4">
-
-                        <p class="text-sm text-gray-700 mb-2">
-                            <span class="font-semibold">Category:</span> Fruit Tree
-                        </p>
-                        <p class="text-sm text-gray-700 mb-2">
-                            <span class="font-semibold">Price:</span> ৳500
-                        </p>
-                        <p class="text-sm text-gray-700">
-                            <span class="font-semibold">Description:</span>
-                            A fast-growing tropical tree that produces delicious, juicy mangoes during summer.
-                            Its dense green leaves give excellent shade.
-                        </p> -->
 
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                         <button type="button" command="close" commandfor="dialog"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
+                            class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs inset-ring inset-ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
                     </div>
                 </el-dialog-panel>
             </div>
